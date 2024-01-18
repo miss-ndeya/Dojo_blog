@@ -1,24 +1,45 @@
-import { useState } from "react";
-const Home = () => {
-    const [name, setName] = useState("mario")
-    const [age, setAge] = useState(25)
+import { useEffect, useState } from "react";
+import BlogList from "./BlogList";
 
-    const handleClick = () => {
-        setName("Pape")
-        setAge(30)
-    }
-    return ( 
-        <div className="home">
-            <h2>HomePage</h2>
-            <p style={{marginBottom: '15px', marginTop: '15px'}}> { name } is { age } years old</p>
-            <button style={{ 
-            color: 'white', 
-            backgroundColor: '#f1356d',
-            borderRadius: '8px', 
-            marginBottom: '10px'
-          }} onClick={handleClick}>Click me</button>
-        </div>
-     );
-}
- 
+const Home = () => {
+  const [blogs, setBlogs] = useState(null);
+  const [isPending, setIsPending] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      fetch("http://localhost:8000/blogss")
+        .then((res) => {
+          if (!res.ok) {
+            throw Error("could not fetch the data for that resource");
+          }
+          return res.json();
+        })
+        .then((data) => {
+          setIsPending(false);
+          setBlogs(data);
+          setError(null)
+        })
+        .catch((err) => {
+          setIsPending(false);
+          setError(err.message);
+        });
+    }, 1000);
+  }, []);
+
+  return (
+    <div className="home">
+      {error ? (
+        <div>{error}</div>
+      ) : isPending ? (
+        <div>Loading</div>
+      ) : blogs ? (
+        <BlogList blogs={blogs} title="All Blogs" />
+      ) : (
+        " "
+      )}
+    </div>
+  );
+};
+
 export default Home;

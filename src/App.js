@@ -1,6 +1,5 @@
 import Navbar from './Navbar';
-// import Home from './Home';
-import Outputting from './Outputting';
+import Home from './Home';
 
 function App() {
 
@@ -8,9 +7,7 @@ function App() {
     <div className="App">
         < Navbar />
       <div className="content">
-        {/* < Home /> */}
-        < Outputting />
-       
+        < Home />
       </div>
 
     </div>
