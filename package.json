@@ -2,7 +2,7 @@
   "name": "dojo-blog",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https://https://miss-ndeya.github.io/Dojo_blog/",
+  "homepage":"https://miss-ndeya.github.io/Dojo_blog/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
