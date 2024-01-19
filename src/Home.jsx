@@ -13,7 +13,7 @@ const Home = () => {
       ) : blogs ? (
         <BlogList blogs={blogs} title="All Blogs" />
       ) : (
-        " "
+        "Aucun Blogs pour le moment"
       )}
     </div>
   );
