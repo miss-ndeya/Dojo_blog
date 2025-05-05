@@ -11,7 +11,7 @@ const Home = () => {
       ) : isPending ? (
         <div>Loading</div>
       ) : blogs ? (
-        <BlogList blogs={blogs} title="All Blogs" />
+        <BlogList blogs={blogs} />
       ) : (
         "Aucun Blogs pour le moment"
       )}
